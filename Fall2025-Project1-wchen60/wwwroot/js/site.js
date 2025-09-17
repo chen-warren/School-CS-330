@@ -1,4 +1,23 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿let text = "The Dick Van Dyke Show..."; 
+let element = document.getElementById('Footer'); 
 
-// Write your JavaScript code.
+function typeWriter() {
+    let i = 0;
+    element.innerHTML = ''; 
+
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text[i];
+            if (text[i] === ' ') 
+                setTimeout(type, 10);
+            else 
+                setTimeout(type, 100);
+            i++; 
+        } else {
+            setTimeout(typeWriter, 10000);
+        }
+    }
+    type(); 
+}
+
+typeWriter();
