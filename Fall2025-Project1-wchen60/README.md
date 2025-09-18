@@ -1,2 +1,3 @@
 # Project 1
-This is project 1
+
+Project 1, a webpage showcasing a TV Show I like
