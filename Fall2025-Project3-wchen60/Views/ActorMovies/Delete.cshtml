@@ -1,0 +1,19 @@
+@model Fall2025_Project3_wchen60.Models.ActorMovie
+
+@{
+    ViewData["Title"] = "Delete Relationship";
+}
+
+<h1>Delete Relationship</h1>
+
+<div class="alert alert-warning">
+    Are you sure you want to remove the relationship between:
+    <strong>@Model.Actor?.Name</strong> and <strong>@Model.Movie?.Title</strong>?
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="ActorId" />
+    <input type="hidden" asp-for="MovieId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

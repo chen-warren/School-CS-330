@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Welcome to Movie and Actor Sentiment Analyzer";
+}
+
+<div class="text-center">
+    <h1>Movie and Actor Sentiment Analyzer</h1>
+    <p class="lead mt-3">
+        Welcome to <strong>Movie and Actor Sentiment Analyzer</strong> to analyze movies and actors.
+        A website built for anyone who loves movies and wants to understand the true sentiment when watching the movies.
+        This website gives you the chance to explore tweets on the movies
+        You can easily add movies to the platform, read through the tweets posted about them,
+        and see the overall mood of each tweet.
+        But it doesn’t stop with movies. You can also look up your favorite actors and see the tweets about them.
+        You can also see how everything connects.
+        You can see which actors starred in which movies, and just as easily find out what films a certain actor has been part of.
+        Movie and Actor Sentiment Analyzer lets you explore your favorite movies and actors in a fun way.
+    </p>
+
+    <p class="mt-4">
+        <a asp-controller="Movies" asp-action="Index" class="btn btn-outline-primary btn-lg me-3">
+            Browse Movies
+        </a>
+        <a asp-controller="Actors" asp-action="Index" class="btn btn-outline-primary btn-lg me-3">
+            Browse Actors
+        </a>
+        <a asp-controller="ActorMovies" asp-action="Index" class="btn btn-outline-primary btn-lg">
+            Manage Relationships
+        </a>
+    </p>
+</div> 

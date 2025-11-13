@@ -1,0 +1,50 @@
+@model Movie
+
+@{
+    ViewData["Title"] = "Create Movie";
+}
+
+<h1>Add a New Movie</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    
+    <div class="form-group mb-3">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Year" class="control-label"></label>
+        <input asp-for="Year" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Genre" class="control-label"></label>
+        <input asp-for="Genre" class="form-control" />
+        <span asp-validation-for="Genre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ImdbLink" class="control-label"></label>
+        <input asp-for="ImdbLink" class="form-control" />
+        <span asp-validation-for="ImdbLink" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Poster" class="control-label">Poster Image</label>
+        <input type="file" name="posterFile" accept="image/*" class="form-control" />
+        <span class="text-muted">Upload a poster image for this movie</span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add Movie</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

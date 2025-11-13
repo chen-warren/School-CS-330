@@ -1,0 +1,64 @@
+@model IEnumerable<Fall2025_Project3_wchen60.Models.ActorMovie>
+
+@{
+    ViewData["Title"] = "Actor-Movie Relationships";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Relationship</a>
+</p>
+
+<table id="actorMoviesTable" class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Actor</th>
+        <th>Movie</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Any())
+    {
+        @foreach (var am in Model)
+        {
+            <tr>
+                <td>@(am.Actor?.Name ?? "N/A")</td>
+                <td>@(am.Movie?.Title ?? "N/A")</td>
+                <td>
+                    <a asp-action="Delete" asp-route-actorId="@am.ActorId" asp-route-movieId="@am.MovieId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td class="text-center">No relationships found.</td>
+            <td class="text-center"><a asp-action="Create">Create one now</a></td>
+            <td></td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" integrity="sha512-aZVdJkG8B8bXWj+iKu3Kwz0d0KZlu/cZeQpdQYOuZ8BCrwRdMqOb9/LNxihZ07fEy/uRgqXOTB86Rn11vTHYHA==" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('#actorMoviesTable').DataTable({
+                "order": [[0, "asc"]], 
+                "pageLength": 10
+            });
+        });
+    </script>
+}

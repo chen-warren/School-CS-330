@@ -1,0 +1,32 @@
+@model Fall2025_Project3_wchen60.Models.ViewModels.ActorMovieViewModel
+
+@{
+    ViewData["Title"] = "Create Actor-Movie Relationship";
+}
+
+<h1>Create Actor-Movie Relationship</h1>
+
+<form asp-action="Create" asp-controller="ActorMovies" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    
+    <div class="mb-3">
+        <label asp-for="ActorMovie.ActorId" class="form-label">Actor</label>
+        <select asp-for="ActorMovie.ActorId" class="form-select" asp-items="Model.Actors" required></select>
+        <span asp-validation-for="ActorMovie.ActorId" class="text-danger"></span>
+    </div>
+    
+    <div class="mb-3">
+        <label asp-for="ActorMovie.MovieId" class="form-label">Movie</label>
+        <select asp-for="ActorMovie.MovieId" class="form-select" asp-items="Model.Movies" required></select>
+        <span asp-validation-for="ActorMovie.MovieId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

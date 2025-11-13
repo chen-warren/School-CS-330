@@ -1,0 +1,70 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    text-align: center; 
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    background:
+            radial-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), 
+            url('img1.jpg') center/cover no-repeat;
+}
+
+main {
+    flex: 1;
+}
+
+.main-content-1 {
+    margin: 5em auto;
+    padding: 1em;
+    text-align: left; 
+    width: 90%;
+    color: #051b11;
+    border-radius: 1em;
+    background: linear-gradient(
+            135deg,
+            rgba(255, 182, 193, 0.6),
+            rgba(173, 216, 230, 0.6),
+            rgba(221, 160, 221, 0.6)
+    );
+    font-weight: 1000;
+}
+
+.btn-outline-primary {
+    font-weight: bold;
+    color: #1e3a00;             
+    border-color: #03265c;      
+}
+
+p {
+    color: #2b2f32;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.table {
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.btn {
+    border-radius: 6px;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(8px); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); 
+    transition: all 0.3s ease;
+}
+
