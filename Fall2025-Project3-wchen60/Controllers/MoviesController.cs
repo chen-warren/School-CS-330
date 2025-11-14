@@ -106,11 +106,19 @@ namespace Fall2025_Project3_wchen60.Controllers
         // POST: /Movies/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Year,Genre,ImdbLink")] Movie movie, IFormFile posterFile)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Year,Genre,ImdbLink")] Movie movie, IFormFile? posterFile)
         {
             if (id != movie.Id)
             {
                 return NotFound();
+            }
+
+            ModelState.Remove("Poster");
+            ModelState.Remove("ActorMovies");
+
+            if (string.IsNullOrWhiteSpace(movie.ImdbLink))
+            {
+                ModelState.Remove("ImdbLink");
             }
 
             if (ModelState.IsValid)
@@ -125,7 +133,7 @@ namespace Fall2025_Project3_wchen60.Controllers
                         existingMovie.Genre = movie.Genre;
                         existingMovie.ImdbLink = movie.ImdbLink;
 
-                        if (posterFile.Length > 0)
+                        if (posterFile is { Length: > 0 })
                         {
                             using var memoryStream = new MemoryStream();
                             await posterFile.CopyToAsync(memoryStream);
